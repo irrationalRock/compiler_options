@@ -1,4 +1,6 @@
 import subprocess
+import re
+import time
 
 compiler_options = [
 "-finline-functions ",
@@ -67,26 +69,37 @@ for x in range(0,16384):
 
     print options
 
+    p = re.compile("CMAKE_CXX_FLAGS_DEBUG:STRING=")
+
     with open("CMakeCache.txt", "r") as ins:
         array = []
         for line in ins:
             array.append(line)
-
+            
     for i in array:
-		if i == "CMAKE_CXX_FLAGS_DEBUG:STRING=-g":
-            i += options
+        if p.match(i):
+            print "match"
+            i = "CMAKE_CXX_FLAGS_DEBUG:STRING=-g "  + options
+            print "i:" + i
 
     file = open('CMakeCache.txt','w')
     for j in array:
-		print j
-		file.write(j)
+        #print j
+	file.write(j)
+    file.close()
 
-	file.close()
-
-    subprocess.Popen("../configure-cmake")
+    subprocess.Popen("../configure-cmake", shell=True)
     print "done configure"
-    subprocess.Popen("make")
+    time.sleep(5)
+    subprocess.Popen("make", shell=True)
     print "done make"
-
+    time.sleep(30)
+    subprocess.Popen('time ./brotli MOCK_DATA_BIG.csv',shell=True)
+    print "done time"
+    #time.sleep(5)
+    #subprocess.Popen('echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" >> results.txt', shell=True)
+    time.sleep(90)
+    subprocess.Popen('rm MOCK_DATA_BIG.csv.br',shell=True)
+    
     options = " -O2 "
     cur = ""
