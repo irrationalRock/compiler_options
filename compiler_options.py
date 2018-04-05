@@ -75,7 +75,7 @@ for x in range(0,16384):
         array = []
         for line in ins:
             array.append(line)
-            
+
     for i in array:
         if p.match(i):
             print "match"
@@ -94,12 +94,12 @@ for x in range(0,16384):
     subprocess.Popen("make", shell=True)
     print "done make"
     time.sleep(30)
-    subprocess.Popen('time ./brotli MOCK_DATA_BIG.csv',shell=True)
+    subprocess.Popen('time ./brotli MOCK_DATA_BIG.csv 2 >> results.txt ',shell=True)
     print "done time"
-    #time.sleep(5)
-    #subprocess.Popen('echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" >> results.txt', shell=True)
+    time.sleep(5)
+    subprocess.Popen('echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" >> results.txt', shell=True)
     time.sleep(90)
     subprocess.Popen('rm MOCK_DATA_BIG.csv.br',shell=True)
-    
+
     options = " -O2 "
     cur = ""
