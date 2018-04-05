@@ -6,7 +6,7 @@ for i in "${a[@]}"
 do
 	echo $i
 
-	sed 's/CMAKE_CXX_FLAGS_DEBUG:STRING=/$i/g' CMakeCache.txt
+	sed 's/CMAKE_CXX_FLAGS_DEBUG:STRING=.*/$i/g' CMakeCache.txt
 
 	../configure-cmake
 
