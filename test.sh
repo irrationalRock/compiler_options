@@ -79,7 +79,7 @@ for i in `seq 0 4096`; do
     options = options + ${ARRAY[0]}
   fi
 
-  sed 's/CMAKE_CXX_FLAGS_DEBUG:STRING=/CMAKE_CXX_FLAGS_DEBUG:STRING=$options/g'
+  sed 's/CMAKE_CXX_FLAGS_DEBUG:STRING=/CMAKE_CXX_FLAGS_DEBUG:STRING=$options/g' CMakeCache.txt
 
   ../configure-cmake
 
