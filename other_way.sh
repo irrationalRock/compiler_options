@@ -1,12 +1,11 @@
 #!/bin/bash
 
-readarray a < options.txt
-
-for i in "${a[@]}"
+cat options.txt | while
+read i
 do
 	echo $i
 
-	sed 's/CMAKE_CXX_FLAGS_DEBUG:STRING=.*/$i/g' CMakeCache.txt
+	sed "s/CMAKE_CXX_FLAGS_DEBUG:STRING=.*/$i/g" CMakeCache.txt > CMakeCache.txt
 
 	../configure-cmake
 
