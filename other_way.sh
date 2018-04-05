@@ -9,10 +9,12 @@ do
 	sed '  sed 's/CMAKE_CXX_FLAGS_DEBUG:STRING=/$i/g' CMakeCache.txt'
 
 	../configure-cmake
-	
+
 	make
 
-	time ./brotli
+	time ./brotli MOCK_DATA_HUGE.csv
+
+	rm MOCK_DATA_HUGE.csv.br
 
 	make clean
 done
