@@ -84,8 +84,7 @@ for x in range(0,16384):
 
     file = open('CMakeCache.txt','w')
     for j in array:
-        #print j
-	file.write(j)
+	       file.write(j)
     file.close()
 
     subprocess.Popen("../configure-cmake", shell=True)
@@ -94,7 +93,7 @@ for x in range(0,16384):
     subprocess.Popen("make", shell=True)
     print "done make"
     time.sleep(30)
-    subprocess.Popen('time ./brotli MOCK_DATA_BIG.csv 2 ',shell=True)
+    subprocess.Popen('time ./brotli MOCK_DATA_BIG.csv',shell=True)
     print "done time"
     time.sleep(5)
     subprocess.Popen('echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"', shell=True)
