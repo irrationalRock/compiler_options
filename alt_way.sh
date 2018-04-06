@@ -5,7 +5,7 @@ read i
 do
 	echo $i
 
-	sed -i "s/CMAKE_C_FLAGS_DEBUG:STRING=.*/$i/g" CMakeCache.txt
+	sed -i "s/CMAKE_C_FLAGS_DEBUG:STRING=.*/$i/" CMakeCache.txt
 
 	../configure-cmake
 
