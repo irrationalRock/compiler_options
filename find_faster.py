@@ -5,11 +5,6 @@ def parseTime(time):
     sec_location = time.rindex('s')
     min = time[min_location-1:min_location]
     dot = time[min_location+1:sec_location]
-    #print "time: " + time
-    #print "min: " + str(min)
-    #print "dot: " + str(dot)
-    #print min_location
-    #print sec_location
     return (int(min) * 100) + float(dot)
 
 with open("derp.txt") as f:
@@ -31,7 +26,7 @@ for x in data:
 
 max = 0
 
-#rint len(list_of_real)
+print len(list_of_real)
 
 for x in list_of_real:
     if parseTime(x) > max:
